@@ -11,7 +11,7 @@ As a pre-requisite to Masterclass, you should already have an org and a site up 
 - Add a custom header for some path(s)
 - Add a new user to the org
 
-**IMPORTANT: Before going through the following steps, fork this `eds-masterclass` repo and checkout the `migration` branch.**
+**IMPORTANT: Before going through the following steps, fork this `eds-masterclass` repo.**
 
 ## Step 1: Create the Deno site in your org
 
