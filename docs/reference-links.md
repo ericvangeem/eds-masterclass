@@ -27,12 +27,24 @@ This document contains useful resources for AEM Edge Delivery Services developme
 - https://www.aem.live/community
 - https://www.aem.live/blog
 
+---
+
 ## Integrations
 
+- [Integrations Overview](https://www.aem.live/docs/integrations)
 - [Integration Patterns](https://www.aem.live/developer/integrations)
-- [Getting Started with Cloudflare Workers](https://developers.cloudflare.com/workers/get-started/guide/)
+- [BTOM](https://www.aem.live/developer/byom)
+- [GitHub Actions](https://www.aem.live/developer/github-actions)
+- [Adobe Target](https://www.aem.live/developer/target-integration)
+- [Google Tag Manager](https://www.aem.live/developer/gtm-martech-integration)
+
+### Workers
+
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/)
+- [Fastly Edge Compute](https://www.fastly.com/documentation/solutions/examples/javascript/)
+- [Akamain Edge Workers](https://techdocs.akamai.com/edgeworkers/docs/hello-world)
+- [AWS Lambda @Edge](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-examples.html)
 - [The Cat API](https://thecatapi.com/)
-- [The Cat API Documentation](https://developers.thecatapi.com/)
 
 ---
 
