@@ -11,7 +11,11 @@ As a pre-requisite to Masterclass, you should already have an org and a site up 
 - Add a custom header for some path(s)
 - Add a new user to the org
 
-**IMPORTANT: Before going through the following steps, fork this `eds-masterclass` repo.**
+IMPORTANT: Before going through the following steps, fork this `eds-masterclass` repo and configure the AEM Code Sync App:
+- Visit https://github.com/apps/aem-code-sync
+- Hit `Configure`
+- Select `Only Select Repositories` and give your new forked repo access to the code sync app
+.
 
 ## References:
 
@@ -41,8 +45,11 @@ Alternatively:
 - Create a new site
 - Point it to your fork of this `eds-masterclass` repo
 - Create a folder called `deno` in DA for the site, and point the site's content to https://content.da.live/{ORG}/deno/
-- Copy the boilerplate content from your original site created with the DA tutorial to this new site. We just need some sample content.
+- Copy the boilerplate content from [here](https://da.live/#/usman-khalid/eds-masterclass-demo-content) into this site. We just need some sample content. Preview and publish it.
 
+_TIP: Use the [Bulk Operations app](https://da.live/apps/bulk) to bulk preview/publish pages & fragments._
+
+<img width="1196" height="394" alt="image" src="https://github.com/user-attachments/assets/2951b6a8-7a35-4939-b4e2-bc8e75c82c15" />
 
 ## Step 2: Import content
 - Run `aem import` from the repo
@@ -54,28 +61,29 @@ Alternatively:
     - https://deno.com/blog/open-source
     - https://deno.com/blog/v2.5
 
-TASK: The blog post metadata should contain fields for `Author` and `Tags` which are currently missing. Update the `handleBlogPosts` function in `import.js` to include these in the metadata table.
+TASK: The import currently mostly works fine, but we need to enhance it to:
+- Include the `Author` and `Tags` of the post as metadata which are currently missing.
+- Remove the author and tags that are being imported as actual content since we're utilizing page metadata for that.
+
+Update the `handleBlogPosts` function in `import.js` to include these in the metadata table. We also want to remove the author and tags from the actual content that is being imported since that is being placed in the metadata.
 
 _Solution is available here: https://gist.github.com/usman-khalid/d15cdec210ff88fd9db55e022a3804fb_
 
 _TIP: Use the Import Workbench to import one as a test. Once satisfied with your import updates, import all 5 pages in bulk, then drop them in your DA folder in a /blog folder._
 
 ## Step 3: Create site and blog indices
-- Go to https://labs.aem.live/tools/index-admin/index.html
-- Create a `default` index for site content. It should include all site content excluding blog post pages
-- Create a `blog` index for the blog pages that were imported
-    - Value for `include` should be `/blog/**`
-
-If you prefer curl, use the following command:
+- Create a `default` index for site content by running the following command. It should include all site content excluding blog post pages:
 
 ```sh
-curl -X POST https://admin.hlx.page/config/{org}/sites/{site}/content/query.yaml \
+curl -X PUT https://admin.hlx.page/config/{org}/sites/{site}/content/query.yaml \
   -H 'content-type: text/yaml' \
   -H 'x-auth-token: {your-auth-token}' \
-  --data @resources/index-config.yaml
+  --data-binary @resources/index-config.yaml
 ```
 
-You can verify the index config in the index admin tool mentioned above to confirm that things are looking good and edit as necessary.
+- Then, go to https://labs.aem.live/tools/index-admin/index.html to review your index config.
+- Add a second index called `blog` using the index admin tool.
+    - Value for `include` should be `/blog/**`  
 
 ## Step 4: Create sitemaps pointing to their indices
 - Go to https://labs.aem.live/tools/sitemap-admin/index.html
@@ -86,10 +94,10 @@ You can verify the index config in the index admin tool mentioned above to confi
 If you prefer to use curl, use the following command:
 
 ```sh
-curl -X POST https://admin.hlx.page/config/{org}/sites/{site}/content/sitemap.yaml \
+curl -X PUT https://admin.hlx.page/config/{org}/sites/{site}/content/sitemap.yaml \
   -H 'content-type: text/yaml' \
   -H 'x-auth-token: {your-auth-token}' \
-  --data @resources/sitemap-config.yaml
+  --data-binary @resources/sitemap-config.yaml
 ```
 
 ## Step 5: Create a repoless site
@@ -98,9 +106,13 @@ We now want a second site to utilize the same code & block library.
 
 - Create a second "repoless" site, pointing to the same codebase
 - Create a metadata sheet for the new site and apply the `enterprise` theme to all pages.
+    - The key/value pair should be `URL` and `theme`
+    - We can apply it to all paths on the site using `/**` 
 - Review how themes are loaded in `scripts/aem.js`
 - Change the value of the `--link-color` CSS variable scoped to `body.enterprise`
 - Test your changes on both sites!
+
+<img width="1339" height="462" alt="image" src="https://github.com/user-attachments/assets/cb051888-0fb1-45f0-9e0b-59263db1ebd1" />
 
 You now have two sites with a separatation in styling powered by the same codebase!
 
@@ -135,6 +147,7 @@ curl -X POST https://admin.hlx.page/config/{org}/sites/{site}/headers.json \
 - Create a sheet in the content root called `redirects`
 - Add 2 columns: `source` and `destination`
 - Add a redirect for `/news` to redirect to `/blog`
+- Test the redirect on the site
 
 _Note: These paths should be relative and not the FQDN_
 
