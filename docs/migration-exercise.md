@@ -54,7 +54,11 @@ Alternatively:
     - https://deno.com/blog/open-source
     - https://deno.com/blog/v2.5
 
-TASK: The blog post metadata should contain fields for `Author` and `Tags` which are currently missing. Update the `handleBlogPosts` function in `import.js` to include these in the metadata table.
+TASK: The import currently mostly works fine, but we need to enhance it to:
+- Include the `Author` and `Tags` of the post as metadata which are currently missing.
+- Remove the author and tags that are being imported as actual content since we're utilizing page metadata for that.
+
+Update the `handleBlogPosts` function in `import.js` to include these in the metadata table. We also want to remove the author and tags from the actual content that is being imported since that is being placed in the metadata.
 
 _Solution is available here: https://gist.github.com/usman-khalid/d15cdec210ff88fd9db55e022a3804fb_
 
