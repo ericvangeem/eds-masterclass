@@ -10,12 +10,50 @@
     <header></header>
     <main>
       <div>
-        <div class="location">
+        <div class="color">
           <div>
             <div>
               <h1>{{colorName}}</h1>
+              <p>Color Code: {{colorCode}}</p>
+              <p>RGB Hex: {{rgbHex}}</p>
+              <p>Color Family: {{colorFamily}}</p>
+              <p>Archived: {{archived}}</p>
             </div>
           </div>
+        </div>
+        <div class="metadata">
+          <div><div><p>color-code</p></div><div><p>{{colorCode}}</p></div></div>
+          <div><div><p>color-name</p></div><div><p>{{colorName}}</p></div></div>
+          <div><div><p>rgbHex</p></div><div><p>{{rgbHex}}</p></div></div>
+          <div><div><p>color-family</p></div><div><p>{{colorFamily}}</p></div></div>
+          <div><div><p>archived</p></div><div><p>{{archived}}</p></div></div>
+          <div><div><p>json-ld</p></div><div><p>
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": "{{colorName}}",
+              "sku": "{{colorCode}}",
+              "color": "{{colorName}}",
+              "category": "{{colorFamily}}",
+              "additionalProperty": [
+                {
+                  "@type": "PropertyValue",
+                  "name": "Color Code",
+                  "value": "{{colorCode}}"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "name": "RGB Hex",
+                  "value": "{{rgbHex}}"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "name": "Color Family",
+                  "value": "{{colorFamily}}"
+                }
+              ]
+            }
+          </p></div></div>
         </div>
       </div>
     </main>
