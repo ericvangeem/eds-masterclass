@@ -15,7 +15,7 @@
               <h1>{{colorName}}</h1>
               <img src="https://www.behr.com/renderimage/render?roomId=1007&surfaceId1=1&color1={{colorCode}}&surfaceId2=&color2=&surfaceId3=&color3=&surfaceId4=&color4=&surfaceId5=&color5=&surfaceId6=&color6=&surfaceId7=&color7=&surfaceId8=&color8=&surfaceId9=&color9=&surfaceId10=&color10=" alt="{{colorName}}" />
               <p><b>Color Code:</b> {{colorCode}}</p>
-              <p><b>RGB Hex:</b> {{rgbHex}}</p>
+              <p><b>RGB Hex:</b> {{hexRGB}}</p>
               <p><b>Color Family:</b> {{colorFamily}}</p>
               <p><b>Archived:</b> {{archived}}</p>
             </div>
@@ -28,7 +28,7 @@
           <div><div><p>image</p></div><div><p><img src="https://www.behr.com/renderimage/render?roomId=1007&surfaceId1=1&color1={{colorCode}}&surfaceId2=&color2=&surfaceId3=&color3=&surfaceId4=&color4=&surfaceId5=&color5=&surfaceId6=&color6=&surfaceId7=&color7=&surfaceId8=&color8=&surfaceId9=&color9=&surfaceId10=&color10=" alt="{{colorName}}" /></p></div></div>
           <div><div><p>color-code</p></div><div><p>{{colorCode}}</p></div></div>
           <div><div><p>color-name</p></div><div><p>{{colorName}}</p></div></div>
-          <div><div><p>rgbHex</p></div><div><p>{{rgbHex}}</p></div></div>
+          <div><div><p>rgbHex</p></div><div><p>{{hexRGB}}</p></div></div>
           <div><div><p>color-family</p></div><div><p>{{colorFamily}}</p></div></div>
           <div><div><p>archived</p></div><div><p>{{archived}}</p></div></div>
           <div><div><p>json-ld</p></div><div><p>
@@ -48,7 +48,7 @@
                 {
                   "@type": "PropertyValue",
                   "name": "RGB Hex",
-                  "value": "{{rgbHex}}"
+                  "value": "{{hexRGB}}"
                 },
                 {
                   "@type": "PropertyValue",
